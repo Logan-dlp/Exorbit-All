@@ -25,9 +25,9 @@ public class SemiProceduralMapsManager : MonoBehaviour
     {
         transform.position += new Vector3(0, 0, Speed * Time.deltaTime);
 
-        if (transform.position.z <= -HeightMapsAssets)
+        if (transform.position.z <= -500)
         {
-            Vector3 _pos = new Vector3(0, 0, transform.position.z + HeightMapsAssets);
+            Vector3 _pos = new Vector3(0, 0, transform.position.z + 500);
             Instantiate(RandomMapsAssets(), _pos, Quaternion.Euler(RandomRotationMaps()));
             Destroy(gameObject);
         }
@@ -43,6 +43,6 @@ public class SemiProceduralMapsManager : MonoBehaviour
     {
         int _rand = Random.Range(0, rotationPossible.Length);
         Debug.Log(rotationPossible[_rand]); // a suppr qd on utilise les protos de maps...
-        return new Vector3(0, rotationPossible[_rand], 0);
+        return new Vector3(-90, rotationPossible[_rand], 0);
     }
 }
