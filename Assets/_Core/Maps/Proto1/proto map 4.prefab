@@ -124,9 +124,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4840a5c8b3fdc3242b3a3dbea42ea61a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: -50
-  HeightMapsAssets: 100
-  MapsAssets:
+  speed: -100
+  heightMapsAssets: 500
+  mapsAssets:
   - {fileID: 8995420313692016279, guid: 87bfb2a00a547394b9d969106c82aa15, type: 3}
   - {fileID: 7371168578598508523, guid: 95e71314a7a1c1540ab97b9f3465abcd, type: 3}
   - {fileID: 5689205409492217619, guid: 6fbb8682cf4f66d49bc405e01841fbc1, type: 3}

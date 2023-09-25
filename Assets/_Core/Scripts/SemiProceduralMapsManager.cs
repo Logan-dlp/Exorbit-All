@@ -8,9 +8,9 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(Rigidbody))]
 public class SemiProceduralMapsManager : MonoBehaviour
 {
-    [SerializeField] private float Speed = -5;
-    [SerializeField] private int HeightMapsAssets = 10;
-    [SerializeField] private GameObject[] MapsAssets;
+    [SerializeField] private float speed = -5;
+    [SerializeField] private int heightMapsAssets = 10;
+    [SerializeField] private GameObject[] mapsAssets;
     private float[] rotationPossible = { 0, 90, 180, 270 };
     private Rigidbody rb;
 
@@ -23,11 +23,11 @@ public class SemiProceduralMapsManager : MonoBehaviour
 
     private void Update()
     {
-        transform.position += new Vector3(0, 0, Speed * Time.deltaTime);
+        transform.position += new Vector3(0, 0, speed * Time.deltaTime);
 
-        if (transform.position.z <= -500)
+        if (transform.position.z <= -heightMapsAssets)
         {
-            Vector3 _pos = new Vector3(0, 0, transform.position.z + 500);
+            Vector3 _pos = new Vector3(transform.position.x, transform.position.y, transform.position.z + heightMapsAssets);
             Instantiate(RandomMapsAssets(), _pos, Quaternion.Euler(RandomRotationMaps()));
             Destroy(gameObject);
         }
@@ -35,14 +35,13 @@ public class SemiProceduralMapsManager : MonoBehaviour
 
     private GameObject RandomMapsAssets()
     {
-        int _rand = Random.Range(0, MapsAssets.Length);
-        return MapsAssets[_rand];
+        int _rand = Random.Range(0, mapsAssets.Length);
+        return mapsAssets[_rand];
     }
 
     private Vector3 RandomRotationMaps()
     {
         int _rand = Random.Range(0, rotationPossible.Length);
-        Debug.Log(rotationPossible[_rand]); // a suppr qd on utilise les protos de maps...
         return new Vector3(-90, rotationPossible[_rand], 0);
     }
 }
