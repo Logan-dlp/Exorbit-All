@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     /*
-     * Clamp du viseur a revoir / adapter le viseur 2D
+     * Clamp du viseur a revoir
      * gestion de tire
      * camera qui bouge un peu (voir proj orlog)
      */
@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 crosshairPosition = Vector2.zero;
     [SerializeField] private float crosshairSpeed = 5;
     [SerializeField] private GameObject crosshaireObject;
+    
 
     private void Start()
     {
@@ -30,9 +31,9 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         crosshaireObject.transform.position = new Vector3(
-            crosshaireObject.transform.position.x + Mathf.Clamp(crosshairPosition.x, -10, 10),
-            crosshaireObject.transform.position.y + Mathf.Clamp(crosshairPosition.y, -5, 5),
-            crosshaireObject.transform.position.z);// clamp à revoir !
+            Mathf.Clamp(crosshaireObject.transform.position.x + crosshairPosition.x, -10 + transform.position.x, 10 + transform.position.x), 
+            Mathf.Clamp(crosshaireObject.transform.position.y + crosshairPosition.y, -5 + transform.position.y, 5 + transform.position.y), 
+            crosshaireObject.transform.position.z);
     }
 
     void MovementPerformed(InputAction.CallbackContext _ctx)
