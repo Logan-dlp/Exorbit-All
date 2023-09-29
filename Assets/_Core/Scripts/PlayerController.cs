@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(PlayerInput)), RequireComponent(typeof(CameraController))]
 public class PlayerController : MonoBehaviour
 {
     /*

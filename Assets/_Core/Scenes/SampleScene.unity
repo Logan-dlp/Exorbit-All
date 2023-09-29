@@ -285,6 +285,7 @@ GameObject:
   - component: {fileID: 330585547}
   - component: {fileID: 330585549}
   - component: {fileID: 330585548}
+  - component: {fileID: 330585550}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -363,8 +364,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 37.4, z: -440.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 395409950}
+  m_Children: []
   m_Father: {fileID: 1975846129}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &330585547
@@ -423,7 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74db1326cd33362478ae8ff21a4cc47f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crosshairSpeed: 5
+  crosshairSpeed: 10
   crosshaireObject: {fileID: 395409949}
   crosshaireScreenSize: {x: 9, y: 5}
 --- !u!114 &330585549
@@ -461,6 +461,23 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &330585550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a92d073ab17871d4a82f09bc1bcd859d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crosshaireObjectPosition: {fileID: 395409950}
+  cameraStartRotationX: -2.76
+  cameraStartRotationY: -2.42
+  cameraClampRotation: 2.69
+  smoothRotationDelay: 4
 --- !u!4 &353784682 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3797406990654491819, guid: 6ab9ea3c7abb2d042874ac194c4fa44e,
@@ -494,12 +511,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 395409949}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 37.4, z: -430.5}
+  m_LocalScale: {x: 0.1, y: 0.10000001, z: 0.10000001}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 330585546}
+  m_Father: {fileID: 1975846129}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!64 &395409951
 MeshCollider:
@@ -1353,6 +1370,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 330585546}
+  - {fileID: 395409950}
   - {fileID: 410087041}
   - {fileID: 832575519}
   m_Father: {fileID: 0}
