@@ -15,7 +15,7 @@ public class ScreenManager : MonoBehaviour
 
     private void Start()
     {
-        ApplyResolution((int)resolutionScreen.x, (int)resolutionScreen.y, fullscreen);
+        ApplyResolution(resolutionScreen.x, resolutionScreen.y, fullscreen);
         ApplyCursor(visibleCursor, lockmodeCursor);
     }
 
@@ -25,8 +25,8 @@ public class ScreenManager : MonoBehaviour
         Cursor.lockState = _lockMode;
     }
 
-    private void ApplyResolution(int _resolutionX, int _resolutionY, bool _fullscreen)
+    private void ApplyResolution(float _resolutionX, float _resolutionY, bool _fullscreen)
     {
-        Screen.SetResolution(_resolutionX, _resolutionY, _fullscreen);
+        Screen.SetResolution((int)_resolutionX, (int)_resolutionY, _fullscreen);
     }
 }

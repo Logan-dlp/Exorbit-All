@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    [Header("Crosshaire Object")]
     [SerializeField] private Transform crosshaireObjectPosition;
+    [Header("Smooth Camera Settings")]
     [SerializeField] private float cameraStartRotationX;
     [SerializeField] private float cameraStartRotationY;
     [SerializeField] private float cameraClampRotation;

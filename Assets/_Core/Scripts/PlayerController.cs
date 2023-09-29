@@ -8,13 +8,12 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     /*
-     * Clamp du viseur a revoir
      * gestion de tire
-     * camera qui bouge un peu (voir proj orlog)
      */
     
     private PlayerInput controller;
     private Vector2 crosshairPosition = Vector2.zero;
+    
     [Header("Crosshaire Settings")]
     [SerializeField] private float crosshairSpeed = 5;
     [SerializeField] private GameObject crosshaireObject;
@@ -32,18 +31,26 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        CrosshaireMovement();
+    }
+
+    private void CrosshaireMovement()
+    {
         crosshaireObject.transform.position = new Vector3(
             Mathf.Clamp(crosshaireObject.transform.position.x + crosshairPosition.x, -crosshaireScreenSize.x + transform.position.x, crosshaireScreenSize.x + transform.position.x), 
             Mathf.Clamp(crosshaireObject.transform.position.y + crosshairPosition.y, -crosshaireScreenSize.y + transform.position.y, crosshaireScreenSize.y + transform.position.y), 
             crosshaireObject.transform.position.z);
     }
 
-    void MovementPerformed(InputAction.CallbackContext _ctx)
+    
+    
+    // Input.
+    private void MovementPerformed(InputAction.CallbackContext _ctx)
     {
         crosshairPosition = _ctx.ReadValue<Vector2>() * Time.deltaTime * crosshairSpeed;
     }
 
-    void MouvementCanceled(InputAction.CallbackContext _ctx)
+    private void MouvementCanceled(InputAction.CallbackContext _ctx)
     {
         crosshairPosition = Vector2.zero;
     }
