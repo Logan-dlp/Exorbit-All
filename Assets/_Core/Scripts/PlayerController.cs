@@ -15,8 +15,10 @@ public class PlayerController : MonoBehaviour
     
     private PlayerInput controller;
     private Vector2 crosshairPosition = Vector2.zero;
+    [Header("Crosshaire Settings")]
     [SerializeField] private float crosshairSpeed = 5;
     [SerializeField] private GameObject crosshaireObject;
+    [SerializeField] private Vector2 crosshaireScreenSize;
     
 
     private void Start()
@@ -31,8 +33,8 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         crosshaireObject.transform.position = new Vector3(
-            Mathf.Clamp(crosshaireObject.transform.position.x + crosshairPosition.x, -10 + transform.position.x, 10 + transform.position.x), 
-            Mathf.Clamp(crosshaireObject.transform.position.y + crosshairPosition.y, -5 + transform.position.y, 5 + transform.position.y), 
+            Mathf.Clamp(crosshaireObject.transform.position.x + crosshairPosition.x, -crosshaireScreenSize.x + transform.position.x, crosshaireScreenSize.x + transform.position.x), 
+            Mathf.Clamp(crosshaireObject.transform.position.y + crosshairPosition.y, -crosshaireScreenSize.y + transform.position.y, crosshaireScreenSize.y + transform.position.y), 
             crosshaireObject.transform.position.z);
     }
 

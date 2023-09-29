@@ -425,6 +425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crosshairSpeed: 5
   crosshaireObject: {fileID: 395409949}
+  crosshaireScreenSize: {x: 9, y: 5}
 --- !u!114 &330585549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1370,6 +1371,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resolutionScreen: {x: 1680, y: 1050}
   fullscreen: 1
+  visibleCursor: 0
+  lockmodeCursor: 1
 --- !u!1001 &2041870091
 PrefabInstance:
   m_ObjectHideFlags: 0
