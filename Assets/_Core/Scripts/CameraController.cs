@@ -22,13 +22,9 @@ public class CameraController : MonoBehaviour
     {
         float _rotationX = _targetObject.position.y;
         float _rotationY = _targetObject.position.x;
-        
-        Debug.Log(_rotationX);
 
         _rotationX = Mathf.Clamp(_rotationX, -_clampRotation + _startRotationX, _clampRotation + _startRotationX);
         _rotationY = Mathf.Clamp(_rotationY, -_clampRotation - _startRotationY, _clampRotation + _startRotationY);
-        
-        Debug.Log(_rotationX);
         
         Quaternion _target = Quaternion.Euler(-_rotationX * 100, _rotationY * 10, 0);
         transform.rotation = Quaternion.Slerp(transform.rotation, _target, Time.deltaTime * _delayRotation);
