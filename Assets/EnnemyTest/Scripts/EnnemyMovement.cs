@@ -1,39 +1,78 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+public enum MouvementConfig
+{
+    // fait une boucle d'arriver et ensuite ne bouge pas
+    Stable,
+    // repete la boucle d'arriver en boucle
+    Loop,
+    // fait une boucle d'arriver et ensuite fait une autre boucle de mouvement
+    StableAndLoop,
+}
 
 public class EnnemyMovement : MonoBehaviour
 {
-    [SerializeField] private Transform[] _positionArray;
-    [SerializeField] private float _smooth;
+    public MouvementConfig MouvementConfig;
+    
+    [SerializeField] private Transform[] _positionArrayLoop;
+    [SerializeField] private Transform[] _positionArraySecondeLoop;
+    
+    [SerializeField] private float _smoothSpeed;
     [SerializeField] private float _distanceChangeIndex;
 
-    private int _index = 1;
+    private bool _doFistLoop = false;
+    private bool _doSecondeLoop = false;
+    int _index = 1;
+
+    
 
     private void Start()
     {
-        transform.position = _positionArray[0].position;
+        transform.position = _positionArrayLoop[0].position;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-        Movement();
-    }
-
-    private void Movement()
-    {
-        transform.position = Vector3.Lerp(transform.position, _positionArray[_index].position, _smooth);
-        if (Vector3.Distance(transform.position, _positionArray[_index].position) < _distanceChangeIndex)
+        if (!_doFistLoop)
         {
-            if (_index+1 < _positionArray.Length)
+            Movement(_positionArrayLoop, MouvementConfig);
+        }
+
+        if (_doSecondeLoop)
+        {
+            Movement(_positionArraySecondeLoop, MouvementConfig.Loop);
+        }
+    }
+    
+    
+    private void Movement(Transform[] positionArray, MouvementConfig mouvementConfig = MouvementConfig.Stable)
+    {
+        if (Vector3.Distance(transform.position, positionArray[_index].position) < _distanceChangeIndex)
+        {
+            if (_index + 1 >= positionArray.Length)
             {
-                _index++;
+                if (mouvementConfig == MouvementConfig.Stable)
+                {
+                    _doFistLoop = true;
+                }
+                else if (mouvementConfig == MouvementConfig.Loop)
+                {
+                    _index = 0;
+                }
+                else
+                {
+                    _index = 0;
+                    _doFistLoop = true;
+                    _doSecondeLoop = true;
+                }
             }
             else
             {
-                _index = 0;
+                Debug.Log("position : " + _index);
+                _index++;
             }
         }
+        transform.position = Vector3.Lerp(transform.position, positionArray[_index].position, _smoothSpeed * Time.deltaTime);
     }
 }
