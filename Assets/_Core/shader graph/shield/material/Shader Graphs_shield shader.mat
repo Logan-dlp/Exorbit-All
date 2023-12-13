@@ -55,11 +55,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _FresnelPower: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _FresnelColor: {r: 3.7383113, g: 0, b: 9.136495, a: 0.4392157}
-    - _FrontColor: {r: 0, g: 18.37917, b: 2.6526659, a: 0}
-    - _backColor: {r: 0, g: 1.989972, b: 2.4622886, a: 0.5254902}
+    - _FresnelColor: {r: Infinity, g: NaN, b: Infinity, a: 0.4392157}
+    - _FrontColor: {r: 0, g: 0.44108486, b: 0.67924523, a: 0}
+    - _backColor: {r: 0, g: 1.5540694, b: 3.5227005, a: 1}
     - _fresnelPower: {r: 0.011764713, g: 0.85882354, b: 0.03241416, a: 0}
   m_BuildTextureStacks: []
