@@ -11,8 +11,6 @@ public class EnnemyMovementEditor : Editor
 
     private SerializedProperty _smoothSpeed;
     private SerializedProperty _distanceChangeIndex;
-
-    private bool _positionArraySettingsGroup = false;
     
     private void OnEnable()
     {
