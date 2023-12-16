@@ -42,6 +42,6 @@ public class SemiProceduralMapsManager : MonoBehaviour
     private Vector3 RandomRotationMaps()
     {
         int _rand = Random.Range(0, rotationPossible.Length);
-        return new Vector3(-90, rotationPossible[_rand], 0);
+        return new Vector3(0, rotationPossible[_rand], 0);
     }
 }
