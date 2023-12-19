@@ -44,6 +44,15 @@ public partial class @PlayerActionsController: IInputActionCollection2, IDisposa
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Sheild"",
+                    ""type"": ""Value"",
+                    ""id"": ""0ddfa8b5-5a25-4373-a71d-25d9b0aa02f0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -112,6 +121,17 @@ public partial class @PlayerActionsController: IInputActionCollection2, IDisposa
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""53969bb6-738c-4405-969a-5fc6e23b3fe1"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sheild"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -122,6 +142,7 @@ public partial class @PlayerActionsController: IInputActionCollection2, IDisposa
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
+        m_Player_Sheild = m_Player.FindAction("Sheild", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -185,12 +206,14 @@ public partial class @PlayerActionsController: IInputActionCollection2, IDisposa
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Shoot;
+    private readonly InputAction m_Player_Sheild;
     public struct PlayerActions
     {
         private @PlayerActionsController m_Wrapper;
         public PlayerActions(@PlayerActionsController wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
+        public InputAction @Sheild => m_Wrapper.m_Player_Sheild;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -206,6 +229,9 @@ public partial class @PlayerActionsController: IInputActionCollection2, IDisposa
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
+            @Sheild.started += instance.OnSheild;
+            @Sheild.performed += instance.OnSheild;
+            @Sheild.canceled += instance.OnSheild;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -216,6 +242,9 @@ public partial class @PlayerActionsController: IInputActionCollection2, IDisposa
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
+            @Sheild.started -= instance.OnSheild;
+            @Sheild.performed -= instance.OnSheild;
+            @Sheild.canceled -= instance.OnSheild;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -237,5 +266,6 @@ public partial class @PlayerActionsController: IInputActionCollection2, IDisposa
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnSheild(InputAction.CallbackContext context);
     }
 }

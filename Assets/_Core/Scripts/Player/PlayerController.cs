@@ -19,13 +19,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float crosshairSpeed = 5;
     [SerializeField] private Transform crosshaireObjectPosition;
     [SerializeField] private Vector2 crosshaireScreenSize;
-
-    [SerializeField] private bool shoot = false;
+    
     [SerializeField] private GameObject ballObject;
+
+    private PlayerConfig _playerConfig;
     
 
     private void Start()
     {
+        _playerConfig = GetComponent<PlayerConfig>();
         controller = GetComponent<PlayerInput>();
         
         InputAction _mouvement = controller.actions["Movement"];
@@ -34,13 +36,14 @@ public class PlayerController : MonoBehaviour
 
         InputAction _shoot = controller.actions["Shoot"];
         _shoot.performed += ShootPerformed;
-        _shoot.canceled += ShootCanceled;
+        
+        InputAction _sheild = controller.actions["Sheild"];
+        _sheild.performed += SheildPerformed;
     }
 
     private void Update()
     {
         CrosshaireMovement();
-        Shoot();
     }
 
     private void CrosshaireMovement()
@@ -50,26 +53,20 @@ public class PlayerController : MonoBehaviour
             Mathf.Clamp(crosshaireObjectPosition.position.y + crosshairPosition.y, -crosshaireScreenSize.y + transform.position.y, crosshaireScreenSize.y + transform.position.y), 
             crosshaireObjectPosition.position.z);
     }
-
-    private void Shoot()
-    {
-        if (shoot)
-        {
-            return;
-        }
-    }
-
     
     // Input
     private void ShootPerformed(InputAction.CallbackContext _ctx)
     {
-        shoot = true;
         Instantiate(ballObject, transform.position, Quaternion.identity);
     }
 
-    private void ShootCanceled(InputAction.CallbackContext _ctx)
+    private void SheildPerformed(InputAction.CallbackContext _ctx)
     {
-        shoot = false;
+        if (_playerConfig.SheildIsFull)
+        {
+            _playerConfig.UseSheild = true;
+            
+        }
     }
     
     private void MovementPerformed(InputAction.CallbackContext _ctx)

@@ -22,5 +22,10 @@ public class EnnemyShootController : MonoBehaviour
             Debug.Log(playerConfig.Life);
             Destroy(gameObject);
         }
+        
+        if (other.gameObject.tag == "Sheild")
+        {
+            Destroy(gameObject);
+        }
     }
 }
