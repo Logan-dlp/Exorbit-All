@@ -25,11 +25,6 @@ public class EnnemyShootController : MonoBehaviour
             playerConfig.Damage(_damage);
             Destroy(gameObject);
         }
-        
-        if (other.gameObject.tag == "Sheild")
-        {
-            Destroy(gameObject);
-        }
     }
     
     private void OnBecameInvisible()

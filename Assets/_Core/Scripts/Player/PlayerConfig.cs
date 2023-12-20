@@ -13,6 +13,9 @@ public class PlayerConfig : MonoBehaviour
     [SerializeField] private GameObject _sheildGameObject;
     [SerializeField] private int _timeToRechargeSheild = 1;
 
+    [SerializeField] private GameObject _healFx;
+    [SerializeField] private GameObject _damageFx;
+
     public bool UseSheild = false;
     public bool SheildIsFull = false;
 
@@ -34,12 +37,16 @@ public class PlayerConfig : MonoBehaviour
     public void Heal(int lifeHeal)
     {
         _life = lifeHeal;
+        StartCoroutine(fxEffectActivate(_healFx));
     }
     
     public void Damage(int lifeDamage)
     {
-        _life -= lifeDamage;
-        Debug.Log("damage");
+        if (!UseSheild)
+        {
+            _life -= lifeDamage;
+            StartCoroutine(fxEffectActivate(_damageFx));
+        }
     }
 
     public bool IsDead()
@@ -64,5 +71,12 @@ public class PlayerConfig : MonoBehaviour
             UseSheild = false;
             SheildIsFull = false;
         }
+    }
+
+    IEnumerator fxEffectActivate(GameObject effect)
+    {
+        effect.SetActive(true);
+        yield return new WaitForSeconds(2.5f);
+        effect.SetActive(false);
     }
 }

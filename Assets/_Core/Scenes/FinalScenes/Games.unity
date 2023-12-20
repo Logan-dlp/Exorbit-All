@@ -1669,6 +1669,7 @@ MonoBehaviour:
   _shield: 0
   _sheildGameObject: {fileID: 2104235171725264231}
   _timeToRechargeSheild: 5
+  _healFx: {fileID: 8360088216062031043}
   UseSheild: 0
   SheildIsFull: 0
 --- !u!1 &907033615
