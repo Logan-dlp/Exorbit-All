@@ -35,8 +35,7 @@ public class PlayerShootController : MonoBehaviour
         if (other.GetComponent<Collider>().gameObject.TryGetComponent<EnnemyConfig>(out EnnemyConfig ennemyConfig))
         {
             ennemyConfig.Damage(_damage);
-
-            Debug.Log(ennemyConfig.Life);
+            Destroy(gameObject);
         }
     }
 
