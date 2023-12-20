@@ -16,7 +16,7 @@ public class EnnemyMovementEditor : Editor
     {
         _mouvementConfig = serializedObject.FindProperty("MouvementConfig");
 
-        _positionArrayLoop = serializedObject.FindProperty("_positionArrayLoop");
+        _positionArrayLoop = serializedObject.FindProperty("positionArrayLoop");
         _positionArraySecondeLoop = serializedObject.FindProperty("_positionArraySecondeLoop");
         _distanceChangeIndex = serializedObject.FindProperty("_distanceChangeIndex");
 

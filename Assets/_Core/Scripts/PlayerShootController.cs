@@ -32,13 +32,11 @@ public class PlayerShootController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.TryGetComponent<EnnemyConfig>(out EnnemyConfig ennemyConfig))
+        if (other.GetComponent<Collider>().gameObject.TryGetComponent<EnnemyConfig>(out EnnemyConfig ennemyConfig))
         {
             ennemyConfig.Damage(_damage);
-            if (ennemyConfig.IsDead())
-            {
-                Destroy(ennemyConfig.gameObject);
-            }
+
+            Debug.Log(ennemyConfig.Life);
         }
     }
 

@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2796620827077646395}
   - component: {fileID: 3599388037132716542}
   - component: {fileID: 9085524714454519008}
-  - component: {fileID: 2899607190229291420}
+  - component: {fileID: -1270769978098081562}
   m_Layer: 0
-  m_Name: Shoot_player
+  m_Name: Shoot_ennemie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,8 +31,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6772087699232253491}
   m_Father: {fileID: 0}
@@ -135,7 +135,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2899607190229291420
+--- !u!114 &-1270769978098081562
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,11 +144,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3730495105260831937}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2fb9a56e4f60ed44888b7fc24777ce6, type: 3}
+  m_Script: {fileID: 11500000, guid: 248dcde642ae41c588af7cca6542dd0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 500
-  _damage: 25
+  _damage: 5
 --- !u!1 &6653363302226117921
 GameObject:
   m_ObjectHideFlags: 0

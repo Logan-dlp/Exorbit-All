@@ -4,26 +4,25 @@ using UnityEngine;
 [RequireComponent(typeof(EnnemyMovement))]
 public class EnnemyConfig : MonoBehaviour
 {
+    [SerializeField] private StatsManager _statsManager;
     [SerializeField] private GameObject _objectShoot;
     [SerializeField] private int _life = 100;
     public int Life => _life;
     [SerializeField] private float _shootTime;
     private PlayerConfig _playerTarget;
+    private SpawnManager _spawnManager;
 
     private void Start()
     {
         _playerTarget = Camera.main.GetComponent<PlayerConfig>();
+        _spawnManager = GameObject.FindObjectOfType<SpawnManager>();
         StartCoroutine(Shoot());
     }
 
     private void Update()
     {
         transform.LookAt(_playerTarget.transform);
-
-        if (IsDead())
-        {
-            Destroy(gameObject);
-        }
+        IsDead();
     }
 
     IEnumerator Shoot()
@@ -42,6 +41,9 @@ public class EnnemyConfig : MonoBehaviour
     {
         if (Life <= 0)
         {
+            _statsManager.score += Random.Range(100, 300);
+            _spawnManager.ennemieInGameList.Remove(gameObject);
+            Destroy(gameObject);
             return true;
         }
         return false;

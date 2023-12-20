@@ -15,8 +15,9 @@ public class EnnemyMovement : MonoBehaviour
 {
     public MouvementConfig MouvementConfig;
     
-    [SerializeField] private Transform[] _positionArrayLoop;
-    [SerializeField] private Transform[] _positionArraySecondeLoop;
+    [SerializeField] public Vector3[] positionArrayLoop;
+    
+    [SerializeField] private Vector3[] _positionArraySecondeLoop;
     
     [SerializeField] private float _smoothSpeed;
     [SerializeField] private float _distanceChangeIndex;
@@ -29,14 +30,14 @@ public class EnnemyMovement : MonoBehaviour
 
     private void Start()
     {
-        transform.position = _positionArrayLoop[0].position;
+        transform.position = positionArrayLoop[0];
     }
 
     private void LateUpdate()
     {
         if (!_doFistLoop)
         {
-            Movement(_positionArrayLoop, MouvementConfig);
+            Movement(positionArrayLoop, MouvementConfig);
         }
 
         if (_doSecondeLoop)
@@ -46,9 +47,9 @@ public class EnnemyMovement : MonoBehaviour
     }
     
     
-    private void Movement(Transform[] positionArray, MouvementConfig mouvementConfig = MouvementConfig.Stable)
+    private void Movement(Vector3[] positionArray, MouvementConfig mouvementConfig = MouvementConfig.Stable)
     {
-        if (Vector3.Distance(transform.position, positionArray[_index].position) < _distanceChangeIndex)
+        if (Vector3.Distance(transform.position, positionArray[_index]) < _distanceChangeIndex)
         {
             if (_index + 1 >= positionArray.Length)
             {
@@ -69,10 +70,9 @@ public class EnnemyMovement : MonoBehaviour
             }
             else
             {
-                Debug.Log("position : " + _index);
                 _index++;
             }
         }
-        transform.position = Vector3.Lerp(transform.position, positionArray[_index].position, _smoothSpeed * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, positionArray[_index], _smoothSpeed * Time.deltaTime);
     }
 }

@@ -33,7 +33,7 @@ public class PlayerConfig : MonoBehaviour
 
     public void Heal(int lifeHeal)
     {
-        _life += lifeHeal;
+        _life = lifeHeal;
     }
     
     public void Damage(int lifeDamage)
