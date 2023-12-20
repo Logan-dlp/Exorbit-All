@@ -21,6 +21,8 @@ public class PlayerShootController : MonoBehaviour
         Vector3 _targetPosition = direction - transform.position;
         Quaternion _rotation = Quaternion.LookRotation(_targetPosition);
         transform.rotation = _rotation;
+
+        transform.position += transform.forward * 10;
     }
 
     private void Update()
@@ -38,5 +40,10 @@ public class PlayerShootController : MonoBehaviour
                 Destroy(ennemyConfig.gameObject);
             }
         }
+    }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }

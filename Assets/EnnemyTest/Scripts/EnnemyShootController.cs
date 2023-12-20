@@ -28,4 +28,9 @@ public class EnnemyShootController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
 }
