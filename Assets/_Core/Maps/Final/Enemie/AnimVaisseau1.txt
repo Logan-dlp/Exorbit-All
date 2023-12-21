@@ -1,0 +1,4 @@
+Boost Vaisseau 1 : 0-30
+Spin Vaisseau 1 : 40-67
+Boost/Hit/Shoot Vaisseau 2 : 0-15
+Spin Vaisseau 2 : 20-41

@@ -3,15 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Crosshaire
+  - Sheild
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - WallStop
   - Water
   - UI
-  - 
+  - SkyBox
   - 
   - 
   - 
