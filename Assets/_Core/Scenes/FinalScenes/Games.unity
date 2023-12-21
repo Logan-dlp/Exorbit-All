@@ -2028,6 +2028,8 @@ MonoBehaviour:
   _statsManager: {fileID: 11400000, guid: 45b5a02708794984795c39321a4224d7, type: 2}
   _ennemieGameObject: {fileID: 5043518454684618847, guid: e47fad8210c94134383e8d26a5073979,
     type: 3}
+  _bossGameObject: {fileID: 7142945978095520273, guid: e2a47ccf6aa8ab5409e3ba19a18aeec8,
+    type: 3}
   _playerConfig: {fileID: 818157547}
   ennemieInGameList: []
 --- !u!114 &981516413

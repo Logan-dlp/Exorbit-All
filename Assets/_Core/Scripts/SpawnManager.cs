@@ -8,14 +8,17 @@ public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private StatsManager _statsManager;
     [SerializeField] private GameObject _ennemieGameObject;
+    [SerializeField] private GameObject _bossGameObject;
     [SerializeField] private PlayerConfig _playerConfig;
     
     public List<GameObject> ennemieInGameList;
-
+    
     private void Start()
     {
         _statsManager.handle = 0;
         _statsManager.score = 0;
+        _statsManager.handleWithBoss = 0;
+        
         ennemieInGameList = new List<GameObject>();
     }
 
@@ -25,19 +28,52 @@ public class SpawnManager : MonoBehaviour
         {
             _playerConfig.Heal(100);
             _statsManager.handle++;
-            for (int i = 0; i < _statsManager.handle; i++)
+            if ( _statsManager.handle % 3 == 0)
             {
-                for (int j = 0; j < 2; j++)
+                GameObject newBoss = Instantiate(_bossGameObject, Vector3.zero, Quaternion.identity);
+                EnnemyMovement ennemyBossMovement = newBoss.GetComponent<EnnemyMovement>();
+                int random = Random.Range(5, 20);
+                ennemyBossMovement.positionArrayLoop = new Vector3[random];
+                for (int i = 0; i < random; i++)
                 {
-                    GameObject newEnnemie = Instantiate(_ennemieGameObject, Vector3.zero, Quaternion.identity);
-                    EnnemyMovement ennemyMovement = newEnnemie.GetComponent<EnnemyMovement>();
-                    int random = Random.Range(5, 15);
-                    ennemyMovement.positionArrayLoop = new Vector3[random];
-                    for (int k = 0; k < random; k++)
+                    ennemyBossMovement.positionArrayLoop[i] = SetRandomPosition();
+                }
+                ennemieInGameList.Add(newBoss);
+                
+                for (int i = 0; i < _statsManager.handleWithBoss; i++)
+                {
+                    for (int j = 0; j < 2; j++)
                     {
-                        ennemyMovement.positionArrayLoop[k] = SetRandomPosition();
+                        GameObject newEnnemie = Instantiate(_ennemieGameObject, Vector3.zero, Quaternion.identity);
+                        EnnemyMovement ennemyMovement = newEnnemie.GetComponent<EnnemyMovement>();
+                        random = Random.Range(5, 15);
+                        ennemyMovement.positionArrayLoop = new Vector3[random];
+                        for (int k = 0; k < random; k++)
+                        {
+                            ennemyMovement.positionArrayLoop[k] = SetRandomPosition();
+                        }
+                        ennemieInGameList.Add(newEnnemie);
                     }
-                    ennemieInGameList.Add(newEnnemie);
+                }
+                
+                _statsManager.handleWithBoss++;
+            }
+            else
+            {
+                for (int i = 0; i < _statsManager.handle - _statsManager.handleWithBoss; i++)
+                {
+                    for (int j = 0; j < 2; j++)
+                    {
+                        GameObject newEnnemie = Instantiate(_ennemieGameObject, Vector3.zero, Quaternion.identity);
+                        EnnemyMovement ennemyMovement = newEnnemie.GetComponent<EnnemyMovement>();
+                        int random = Random.Range(5, 15);
+                        ennemyMovement.positionArrayLoop = new Vector3[random];
+                        for (int k = 0; k < random; k++)
+                        {
+                            ennemyMovement.positionArrayLoop[k] = SetRandomPosition();
+                        }
+                        ennemieInGameList.Add(newEnnemie);
+                    }
                 }
             }
         }
