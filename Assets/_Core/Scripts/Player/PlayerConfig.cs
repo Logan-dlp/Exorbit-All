@@ -16,6 +16,8 @@ public class PlayerConfig : MonoBehaviour
     [SerializeField] private GameObject _healFx;
     [SerializeField] private GameObject _damageFx;
 
+    [SerializeField] private SceneControl _sceneControl;
+
     public bool UseSheild = false;
     public bool SheildIsFull = false;
 
@@ -32,6 +34,7 @@ public class PlayerConfig : MonoBehaviour
         }
         
         ActiveSheild();
+        IsDead();
     }
 
     public void Heal(int lifeHeal)
@@ -51,8 +54,9 @@ public class PlayerConfig : MonoBehaviour
 
     public bool IsDead()
     {
-        if (Life <= 0)
+        if (_life < 0.1f)
         {
+            _sceneControl.LoadScene("Game Over");
             return true;
         }
         return false;

@@ -1671,6 +1671,7 @@ MonoBehaviour:
   _timeToRechargeSheild: 5
   _healFx: {fileID: 8360088216062031043}
   _damageFx: {fileID: 2087991553}
+  _sceneControl: {fileID: 981516413}
   UseSheild: 0
   SheildIsFull: 0
 --- !u!1 &907033615
@@ -1970,6 +1971,7 @@ GameObject:
   - component: {fileID: 981516410}
   - component: {fileID: 981516411}
   - component: {fileID: 981516412}
+  - component: {fileID: 981516413}
   m_Layer: 0
   m_Name: Unity
   m_TagString: Untagged
@@ -2028,6 +2030,18 @@ MonoBehaviour:
     type: 3}
   _playerConfig: {fileID: 818157547}
   ennemieInGameList: []
+--- !u!114 &981516413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981516409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 833dc99ee20528f4894a13e093d84c4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1007982655
 PrefabInstance:
   m_ObjectHideFlags: 0
