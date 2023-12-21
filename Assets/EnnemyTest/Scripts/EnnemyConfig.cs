@@ -8,7 +8,6 @@ public class EnnemyConfig : MonoBehaviour
     [SerializeField] private GameObject _objectShoot;
     [SerializeField] private int _life = 100;
     public int Life => _life;
-    [SerializeField] private float _shootTime;
     private PlayerConfig _playerTarget;
     private SpawnManager _spawnManager;
 
@@ -28,7 +27,7 @@ public class EnnemyConfig : MonoBehaviour
     IEnumerator Shoot()
     {
         Instantiate(_objectShoot, transform.position, transform.rotation);
-        yield return new WaitForSeconds(_shootTime);
+        yield return new WaitForSeconds(Random.Range(1f, 5f));
         StartCoroutine(Shoot());
     }
 
