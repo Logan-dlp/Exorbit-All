@@ -8,7 +8,7 @@ public class SceneControl : MonoBehaviour
         SceneManager.LoadScene(sceneLoaded);
     }
     
-    public static void Quit()
+    public void Quit()
     {
         Application.Quit();
     }
